@@ -64,16 +64,8 @@
       color: #0d1117;
     }
 
-    .logo-text {
-      font-size: 15px;
-      font-weight: 600;
-    }
-
-    .logo-sub {
-      font-size: 12px;
-      color: var(--muted);
-      font-weight: 400;
-    }
+    .logo-text { font-size: 15px; font-weight: 600; }
+    .logo-sub { font-size: 12px; color: var(--muted); font-weight: 400; }
 
     .lang-toggle {
       display: flex;
@@ -96,34 +88,15 @@
       transition: all 0.15s;
     }
 
-    .lang-btn.active {
-      background: var(--accent);
-      color: #0d1117;
-      font-weight: 600;
-    }
+    .lang-btn.active { background: var(--accent); color: #0d1117; font-weight: 600; }
 
-    main {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 48px 24px 80px;
-    }
+    main { max-width: 960px; margin: 0 auto; padding: 48px 24px 80px; }
 
-    .hero {
-      margin-bottom: 48px;
-    }
+    .hero { margin-bottom: 48px; }
 
-    .hero h1 {
-      font-size: 28px;
-      font-weight: 700;
-      margin-bottom: 8px;
-      line-height: 1.3;
-    }
+    .hero h1 { font-size: 28px; font-weight: 700; margin-bottom: 8px; line-height: 1.3; }
 
-    .hero p {
-      color: var(--muted);
-      font-size: 15px;
-      max-width: 560px;
-    }
+    .hero p { color: var(--muted); font-size: 15px; max-width: 560px; }
 
     .install-global {
       margin-top: 20px;
@@ -142,11 +115,7 @@
       margin-bottom: 8px;
     }
 
-    .code-line {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
+    .code-line { display: flex; align-items: center; gap: 12px; }
 
     .code-line code {
       font-family: var(--mono);
@@ -171,9 +140,7 @@
     .copy-btn:hover { color: var(--text); border-color: var(--accent); }
     .copy-btn.copied { color: var(--green); border-color: var(--green); }
 
-    .category {
-      margin-bottom: 48px;
-    }
+    .category { margin-bottom: 48px; }
 
     .category-header {
       display: flex;
@@ -184,14 +151,8 @@
       border-bottom: 1px solid var(--border);
     }
 
-    .category-icon {
-      font-size: 18px;
-    }
-
-    .category-title {
-      font-size: 16px;
-      font-weight: 600;
-    }
+    .category-icon { font-size: 18px; }
+    .category-title { font-size: 16px; font-weight: 600; }
 
     .category-count {
       background: var(--tag-bg);
@@ -217,14 +178,9 @@
       flex-direction: column;
       gap: 10px;
       transition: border-color 0.15s;
-      position: relative;
     }
 
     .skill-card:hover { border-color: var(--accent); }
-
-    .skill-card.coming-soon {
-      opacity: 0.5;
-    }
 
     .skill-header {
       display: flex;
@@ -242,22 +198,7 @@
 
     .skill-name:hover { text-decoration: underline; }
 
-    .badge-soon {
-      font-size: 10px;
-      background: var(--tag-bg);
-      border: 1px solid var(--border);
-      color: var(--muted);
-      padding: 1px 6px;
-      border-radius: 4px;
-      white-space: nowrap;
-    }
-
-    .skill-desc {
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.5;
-      flex: 1;
-    }
+    .skill-desc { color: var(--muted); font-size: 13px; line-height: 1.5; flex: 1; }
 
     .skill-install {
       display: flex;
@@ -279,11 +220,7 @@
       white-space: nowrap;
     }
 
-    .skill-links {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
+    .skill-links { display: flex; gap: 8px; flex-wrap: wrap; }
 
     .link-btn {
       font-size: 11px;
@@ -298,11 +235,7 @@
 
     .link-btn:hover { color: var(--accent); }
 
-    .related-tags {
-      display: flex;
-      gap: 6px;
-      flex-wrap: wrap;
-    }
+    .related-tags { display: flex; gap: 6px; flex-wrap: wrap; }
 
     .related-tag {
       font-size: 11px;
@@ -328,7 +261,6 @@
     footer a:hover { text-decoration: underline; }
 
     [data-lang="ja"] { display: none; }
-
     body.ja [data-lang="en"] { display: none; }
     body.ja [data-lang="ja"] { display: block; }
     body.ja span[data-lang="ja"] { display: inline; }
@@ -365,18 +297,18 @@
         <label data-lang="ja">スキルのインストール</label>
         <div class="code-line">
           <code>cp -r &lt;skill-dir&gt; ~/.claude/skills/</code>
-          <button class="copy-btn" onclick="copyInstall(this, 'cp -r &lt;skill-dir&gt; ~/.claude/skills/')">copy</button>
+          <button class="copy-btn" onclick="copyCode(this, 'cp -r &lt;skill-dir&gt; ~/.claude/skills/')">copy</button>
         </div>
       </div>
     </div>
 
-    <!-- Git Workflow -->
+    <!-- Git & Version Control -->
     <div class="category">
       <div class="category-header">
         <span class="category-icon">⎇</span>
         <span class="category-title">
-          <span data-lang="en">Git Workflow</span>
-          <span data-lang="ja">Git ワークフロー</span>
+          <span data-lang="en">Git &amp; Version Control</span>
+          <span data-lang="ja">Git・バージョン管理</span>
         </span>
         <span class="category-count">4</span>
       </div>
@@ -390,11 +322,10 @@
           <p class="skill-desc" data-lang="ja">英日バイリンガルのアトミックコミット。ステージ済みファイルを確認、AI帰属を除外。</p>
           <div class="skill-install">
             <code>cp -r commit ~/.claude/skills/</code>
-            <button class="copy-btn" onclick="copyInstall(this, 'cp -r commit ~/.claude/skills/')">copy</button>
+            <button class="copy-btn" onclick="copyCode(this, 'cp -r commit ~/.claude/skills/')">copy</button>
           </div>
           <div class="skill-links">
             <a class="link-btn" href="https://github.com/torifo/skills-commit">↗ GitHub</a>
-            <a class="link-btn" href="https://github.com/torifo/skills-commit/blob/main/README.ja.md">JA</a>
           </div>
           <div class="related-tags">
             <a class="related-tag" href="https://github.com/torifo/skills-safe-commit">skills-safe-commit</a>
@@ -410,11 +341,10 @@
           <p class="skill-desc" data-lang="ja">git履歴から英日バイリンガルの更新履歴を生成。feat/fix/refactor/docsのタイプ別に分類。</p>
           <div class="skill-install">
             <code>cp -r changelog ~/.claude/skills/</code>
-            <button class="copy-btn" onclick="copyInstall(this, 'cp -r changelog ~/.claude/skills/')">copy</button>
+            <button class="copy-btn" onclick="copyCode(this, 'cp -r changelog ~/.claude/skills/')">copy</button>
           </div>
           <div class="skill-links">
             <a class="link-btn" href="https://github.com/torifo/skills-changelog">↗ GitHub</a>
-            <a class="link-btn" href="https://github.com/torifo/skills-changelog/blob/main/README.ja.md">JA</a>
           </div>
           <div class="related-tags">
             <a class="related-tag" href="https://github.com/torifo/skills-commit">skills-commit</a>
@@ -429,14 +359,14 @@
           <p class="skill-desc" data-lang="ja">コミット前バリデーター。シークレット・AI帰属・大容量ファイル・ポリシー違反をブロック。</p>
           <div class="skill-install">
             <code>cp -r safe-commit ~/.claude/skills/</code>
-            <button class="copy-btn" onclick="copyInstall(this, 'cp -r safe-commit ~/.claude/skills/')">copy</button>
+            <button class="copy-btn" onclick="copyCode(this, 'cp -r safe-commit ~/.claude/skills/')">copy</button>
           </div>
           <div class="skill-links">
             <a class="link-btn" href="https://github.com/torifo/skills-safe-commit">↗ GitHub</a>
-            <a class="link-btn" href="https://github.com/torifo/skills-safe-commit/blob/main/README.ja.md">JA</a>
           </div>
           <div class="related-tags">
             <a class="related-tag" href="https://github.com/torifo/skills-commit">skills-commit</a>
+            <a class="related-tag" href="https://github.com/torifo/skills-secret-scan">skills-secret-scan</a>
           </div>
         </div>
 
@@ -448,81 +378,335 @@
           <p class="skill-desc" data-lang="ja">ステールブランチとワークツリーの安全な削除。削除は必ず1件ずつ確認。</p>
           <div class="skill-install">
             <code>cp -r branch-cleanup ~/.claude/skills/</code>
-            <button class="copy-btn" onclick="copyInstall(this, 'cp -r branch-cleanup ~/.claude/skills/')">copy</button>
+            <button class="copy-btn" onclick="copyCode(this, 'cp -r branch-cleanup ~/.claude/skills/')">copy</button>
           </div>
           <div class="skill-links">
             <a class="link-btn" href="https://github.com/torifo/skills-branch-cleanup">↗ GitHub</a>
-            <a class="link-btn" href="https://github.com/torifo/skills-branch-cleanup/blob/main/README.ja.md">JA</a>
           </div>
         </div>
 
       </div>
     </div>
 
-    <!-- Planning & Testing (coming soon) -->
+    <!-- Planning & Execution -->
     <div class="category">
       <div class="category-header">
         <span class="category-icon">⏱</span>
         <span class="category-title">
-          <span data-lang="en">Planning & Testing</span>
-          <span data-lang="ja">プランニング・テスト</span>
+          <span data-lang="en">Planning &amp; Execution</span>
+          <span data-lang="ja">プランニング・実行</span>
         </span>
-        <span class="category-count" style="color:#58a6ff;border-color:#1f3a5c;background:#1f3a5c">coming soon</span>
+        <span class="category-count">3</span>
       </div>
       <div class="skills-grid">
-        <div class="skill-card coming-soon">
+
+        <div class="skill-card">
           <div class="skill-header">
-            <span class="skill-name">skills-time-estimate</span>
-            <span class="badge-soon">soon</span>
-          </div>
-          <p class="skill-desc" data-lang="en">Estimates execution time and token cost before heavy operations.</p>
-          <p class="skill-desc" data-lang="ja">重い操作の前に実行時間とトークンコストを見積もる。</p>
-        </div>
-        <div class="skill-card coming-soon">
-          <div class="skill-header">
-            <span class="skill-name">skills-plan-before-action</span>
-            <span class="badge-soon">soon</span>
+            <a class="skill-name" href="https://github.com/torifo/skills-plan-before-action">skills-plan-before-action</a>
           </div>
           <p class="skill-desc" data-lang="en">Outputs a numbered plan and waits for approval before modifying files or running destructive commands.</p>
-          <p class="skill-desc" data-lang="ja">ファイル変更・破壊的コマンドの前に番号付き計画を提示し承認を待つ。</p>
-        </div>
-        <div class="skill-card coming-soon">
-          <div class="skill-header">
-            <span class="skill-name">skills-run-tests</span>
-            <span class="badge-soon">soon</span>
+          <p class="skill-desc" data-lang="ja">ファイル変更・破壊的コマンドの前に番号付き計画を提示して承認を待つ。</p>
+          <div class="skill-install">
+            <code>cp -r plan-before-action ~/.claude/skills/</code>
+            <button class="copy-btn" onclick="copyCode(this, 'cp -r plan-before-action ~/.claude/skills/')">copy</button>
           </div>
-          <p class="skill-desc" data-lang="en">Detects test runner, estimates time, offers filter/bail/background options before running.</p>
-          <p class="skill-desc" data-lang="ja">テストランナーを検出し、実行前に時間見積もりとフィルタ・バックグラウンド実行を提案。</p>
+          <div class="skill-links">
+            <a class="link-btn" href="https://github.com/torifo/skills-plan-before-action">↗ GitHub</a>
+          </div>
+          <div class="related-tags">
+            <a class="related-tag" href="https://github.com/torifo/skills-time-estimate">skills-time-estimate</a>
+          </div>
         </div>
+
+        <div class="skill-card">
+          <div class="skill-header">
+            <a class="skill-name" href="https://github.com/torifo/skills-time-estimate">skills-time-estimate</a>
+          </div>
+          <p class="skill-desc" data-lang="en">Estimates execution time, token usage, and parallelism before heavy operations.</p>
+          <p class="skill-desc" data-lang="ja">重い操作の前に実行時間・トークン使用量・並列数を見積もる。</p>
+          <div class="skill-install">
+            <code>cp -r time-estimate ~/.claude/skills/</code>
+            <button class="copy-btn" onclick="copyCode(this, 'cp -r time-estimate ~/.claude/skills/')">copy</button>
+          </div>
+          <div class="skill-links">
+            <a class="link-btn" href="https://github.com/torifo/skills-time-estimate">↗ GitHub</a>
+          </div>
+          <div class="related-tags">
+            <a class="related-tag" href="https://github.com/torifo/skills-plan-before-action">skills-plan-before-action</a>
+            <a class="related-tag" href="https://github.com/torifo/skills-run-tests">skills-run-tests</a>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-header">
+            <a class="skill-name" href="https://github.com/torifo/skills-run-tests">skills-run-tests</a>
+          </div>
+          <p class="skill-desc" data-lang="en">Detects test runner, estimates time, offers filter and background options before running.</p>
+          <p class="skill-desc" data-lang="ja">テストランナーを検出し実行前に時間見積もりとフィルタ・バックグラウンド実行を提案。</p>
+          <div class="skill-install">
+            <code>cp -r run-tests ~/.claude/skills/</code>
+            <button class="copy-btn" onclick="copyCode(this, 'cp -r run-tests ~/.claude/skills/')">copy</button>
+          </div>
+          <div class="skill-links">
+            <a class="link-btn" href="https://github.com/torifo/skills-run-tests">↗ GitHub</a>
+          </div>
+          <div class="related-tags">
+            <a class="related-tag" href="https://github.com/torifo/skills-time-estimate">skills-time-estimate</a>
+          </div>
+        </div>
+
       </div>
     </div>
 
-    <!-- Code Analysis (coming soon) -->
+    <!-- Testing & Refactoring -->
+    <div class="category">
+      <div class="category-header">
+        <span class="category-icon">🧪</span>
+        <span class="category-title">
+          <span data-lang="en">Testing &amp; Refactoring</span>
+          <span data-lang="ja">テスト・リファクタリング</span>
+        </span>
+        <span class="category-count">3</span>
+      </div>
+      <div class="skills-grid">
+
+        <div class="skill-card">
+          <div class="skill-header">
+            <a class="skill-name" href="https://github.com/torifo/skills-test-gen">skills-test-gen</a>
+          </div>
+          <p class="skill-desc" data-lang="en">Generates test cases covering happy path, edge cases, and error cases for existing functions.</p>
+          <p class="skill-desc" data-lang="ja">既存関数の正常系・エッジケース・エラーケースのテストを生成。</p>
+          <div class="skill-install">
+            <code>cp -r test-gen ~/.claude/skills/</code>
+            <button class="copy-btn" onclick="copyCode(this, 'cp -r test-gen ~/.claude/skills/')">copy</button>
+          </div>
+          <div class="skill-links">
+            <a class="link-btn" href="https://github.com/torifo/skills-test-gen">↗ GitHub</a>
+          </div>
+          <div class="related-tags">
+            <a class="related-tag" href="https://github.com/torifo/skills-mock-design">skills-mock-design</a>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-header">
+            <a class="skill-name" href="https://github.com/torifo/skills-mock-design">skills-mock-design</a>
+          </div>
+          <p class="skill-desc" data-lang="en">Adds mocks at correct boundaries without over-mocking. Distinguishes when to mock vs use real values.</p>
+          <p class="skill-desc" data-lang="ja">適切な境界にモックを追加。モックすべき箇所と実値を使うべき箇所を判断。</p>
+          <div class="skill-install">
+            <code>cp -r mock-design ~/.claude/skills/</code>
+            <button class="copy-btn" onclick="copyCode(this, 'cp -r mock-design ~/.claude/skills/')">copy</button>
+          </div>
+          <div class="skill-links">
+            <a class="link-btn" href="https://github.com/torifo/skills-mock-design">↗ GitHub</a>
+          </div>
+          <div class="related-tags">
+            <a class="related-tag" href="https://github.com/torifo/skills-test-gen">skills-test-gen</a>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-header">
+            <a class="skill-name" href="https://github.com/torifo/skills-refactor-safe">skills-refactor-safe</a>
+          </div>
+          <p class="skill-desc" data-lang="en">Refactors with green test baseline. Runs tests after each step and reverts immediately on failure.</p>
+          <p class="skill-desc" data-lang="ja">テスト安全網でリファクタリング。各ステップ後にテスト実行、失敗したら即リバート。</p>
+          <div class="skill-install">
+            <code>cp -r refactor-safe ~/.claude/skills/</code>
+            <button class="copy-btn" onclick="copyCode(this, 'cp -r refactor-safe ~/.claude/skills/')">copy</button>
+          </div>
+          <div class="skill-links">
+            <a class="link-btn" href="https://github.com/torifo/skills-refactor-safe">↗ GitHub</a>
+          </div>
+          <div class="related-tags">
+            <a class="related-tag" href="https://github.com/torifo/skills-run-tests">skills-run-tests</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Code Quality & Security -->
     <div class="category">
       <div class="category-header">
         <span class="category-icon">🔍</span>
         <span class="category-title">
-          <span data-lang="en">Code Analysis</span>
-          <span data-lang="ja">コード分析</span>
+          <span data-lang="en">Code Quality &amp; Security</span>
+          <span data-lang="ja">コード品質・セキュリティ</span>
         </span>
-        <span class="category-count" style="color:#58a6ff;border-color:#1f3a5c;background:#1f3a5c">coming soon</span>
+        <span class="category-count">5</span>
       </div>
       <div class="skills-grid">
-        <div class="skill-card coming-soon">
-          <div class="skill-header"><span class="skill-name">skills-error-trace</span><span class="badge-soon">soon</span></div>
-          <p class="skill-desc" data-lang="en">Systematically analyzes stack traces to find root cause.</p>
+
+        <div class="skill-card">
+          <div class="skill-header">
+            <a class="skill-name" href="https://github.com/torifo/skills-dead-code">skills-dead-code</a>
+          </div>
+          <p class="skill-desc" data-lang="en">Detects unused exports, imports, and functions. Confirms each removal individually.</p>
+          <p class="skill-desc" data-lang="ja">未使用のエクスポート・インポート・関数を検出し削除前に確認。</p>
+          <div class="skill-install">
+            <code>cp -r dead-code ~/.claude/skills/</code>
+            <button class="copy-btn" onclick="copyCode(this, 'cp -r dead-code ~/.claude/skills/')">copy</button>
+          </div>
+          <div class="skill-links">
+            <a class="link-btn" href="https://github.com/torifo/skills-dead-code">↗ GitHub</a>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-header">
+            <a class="skill-name" href="https://github.com/torifo/skills-dep-audit">skills-dep-audit</a>
+          </div>
+          <p class="skill-desc" data-lang="en">Audits dependencies for vulnerabilities, outdated versions, and unused packages.</p>
+          <p class="skill-desc" data-lang="ja">脆弱性・古いバージョン・未使用パッケージを依存関係から検出。</p>
+          <div class="skill-install">
+            <code>cp -r dep-audit ~/.claude/skills/</code>
+            <button class="copy-btn" onclick="copyCode(this, 'cp -r dep-audit ~/.claude/skills/')">copy</button>
+          </div>
+          <div class="skill-links">
+            <a class="link-btn" href="https://github.com/torifo/skills-dep-audit">↗ GitHub</a>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-header">
+            <a class="skill-name" href="https://github.com/torifo/skills-secret-scan">skills-secret-scan</a>
+          </div>
+          <p class="skill-desc" data-lang="en">Scans files and staged changes for leaked secrets like API keys and tokens.</p>
+          <p class="skill-desc" data-lang="ja">APIキーやトークンなどの漏洩したシークレットをスキャン。</p>
+          <div class="skill-install">
+            <code>cp -r secret-scan ~/.claude/skills/</code>
+            <button class="copy-btn" onclick="copyCode(this, 'cp -r secret-scan ~/.claude/skills/')">copy</button>
+          </div>
+          <div class="skill-links">
+            <a class="link-btn" href="https://github.com/torifo/skills-secret-scan">↗ GitHub</a>
+          </div>
+          <div class="related-tags">
+            <a class="related-tag" href="https://github.com/torifo/skills-safe-commit">skills-safe-commit</a>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-header">
+            <a class="skill-name" href="https://github.com/torifo/skills-todo-aggregate">skills-todo-aggregate</a>
+          </div>
+          <p class="skill-desc" data-lang="en">Collects TODO/FIXME/HACK comments into a single report grouped by severity.</p>
+          <p class="skill-desc" data-lang="ja">TODO・FIXME・HACKコメントを深刻度別にまとめたレポートに集約。</p>
+          <div class="skill-install">
+            <code>cp -r todo-aggregate ~/.claude/skills/</code>
+            <button class="copy-btn" onclick="copyCode(this, 'cp -r todo-aggregate ~/.claude/skills/')">copy</button>
+          </div>
+          <div class="skill-links">
+            <a class="link-btn" href="https://github.com/torifo/skills-todo-aggregate">↗ GitHub</a>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-header">
+            <a class="skill-name" href="https://github.com/torifo/skills-error-trace">skills-error-trace</a>
+          </div>
+          <p class="skill-desc" data-lang="en">Systematically analyzes stack traces to extract root cause.</p>
           <p class="skill-desc" data-lang="ja">スタックトレースを体系的に分析して根本原因を特定。</p>
+          <div class="skill-install">
+            <code>cp -r error-trace ~/.claude/skills/</code>
+            <button class="copy-btn" onclick="copyCode(this, 'cp -r error-trace ~/.claude/skills/')">copy</button>
+          </div>
+          <div class="skill-links">
+            <a class="link-btn" href="https://github.com/torifo/skills-error-trace">↗ GitHub</a>
+          </div>
         </div>
-        <div class="skill-card coming-soon">
-          <div class="skill-header"><span class="skill-name">skills-dead-code</span><span class="badge-soon">soon</span></div>
-          <p class="skill-desc" data-lang="en">Finds unused exports, imports, and functions. Confirms each removal.</p>
-          <p class="skill-desc" data-lang="ja">未使用のエクスポート・インポート・関数を検出。削除前に確認。</p>
-        </div>
-        <div class="skill-card coming-soon">
-          <div class="skill-header"><span class="skill-name">skills-sql-explain</span><span class="badge-soon">soon</span></div>
+
+      </div>
+    </div>
+
+    <!-- Database & Performance -->
+    <div class="category">
+      <div class="category-header">
+        <span class="category-icon">🗄</span>
+        <span class="category-title">
+          <span data-lang="en">Database &amp; Performance</span>
+          <span data-lang="ja">データベース・パフォーマンス</span>
+        </span>
+        <span class="category-count">2</span>
+      </div>
+      <div class="skills-grid">
+
+        <div class="skill-card">
+          <div class="skill-header">
+            <a class="skill-name" href="https://github.com/torifo/skills-sql-explain">skills-sql-explain</a>
+          </div>
           <p class="skill-desc" data-lang="en">Analyzes EXPLAIN output and proposes specific query optimizations.</p>
-          <p class="skill-desc" data-lang="ja">EXPLAIN出力を解析し、具体的なクエリ最適化を提案。</p>
+          <p class="skill-desc" data-lang="ja">EXPLAINの出力を解析し具体的なクエリ最適化を提案。</p>
+          <div class="skill-install">
+            <code>cp -r sql-explain ~/.claude/skills/</code>
+            <button class="copy-btn" onclick="copyCode(this, 'cp -r sql-explain ~/.claude/skills/')">copy</button>
+          </div>
+          <div class="skill-links">
+            <a class="link-btn" href="https://github.com/torifo/skills-sql-explain">↗ GitHub</a>
+          </div>
         </div>
+
+        <div class="skill-card">
+          <div class="skill-header">
+            <a class="skill-name" href="https://github.com/torifo/skills-mongo-pattern">skills-mongo-pattern</a>
+          </div>
+          <p class="skill-desc" data-lang="en">Designs MongoDB schemas from access patterns using Computed, Extended Reference, Subset, and Bucket patterns.</p>
+          <p class="skill-desc" data-lang="ja">アクセスパターン駆動でMongoDBスキーマを設計（Computed・Extended Reference・Subset・Bucketパターン）。</p>
+          <div class="skill-install">
+            <code>cp -r mongo-pattern ~/.claude/skills/</code>
+            <button class="copy-btn" onclick="copyCode(this, 'cp -r mongo-pattern ~/.claude/skills/')">copy</button>
+          </div>
+          <div class="skill-links">
+            <a class="link-btn" href="https://github.com/torifo/skills-mongo-pattern">↗ GitHub</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Language Specific -->
+    <div class="category">
+      <div class="category-header">
+        <span class="category-icon">⚙️</span>
+        <span class="category-title">
+          <span data-lang="en">Language Specific</span>
+          <span data-lang="ja">言語固有</span>
+        </span>
+        <span class="category-count">2</span>
+      </div>
+      <div class="skills-grid">
+
+        <div class="skill-card">
+          <div class="skill-header">
+            <a class="skill-name" href="https://github.com/torifo/skills-mypy-fix">skills-mypy-fix</a>
+          </div>
+          <p class="skill-desc" data-lang="en">Fixes mypy/pyright type errors at root cause, preferring narrow types over Any.</p>
+          <p class="skill-desc" data-lang="ja">mypy/pyrightの型エラーをroot causeで修正。Anyより狭い型を優先。</p>
+          <div class="skill-install">
+            <code>cp -r mypy-fix ~/.claude/skills/</code>
+            <button class="copy-btn" onclick="copyCode(this, 'cp -r mypy-fix ~/.claude/skills/')">copy</button>
+          </div>
+          <div class="skill-links">
+            <a class="link-btn" href="https://github.com/torifo/skills-mypy-fix">↗ GitHub</a>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-header">
+            <a class="skill-name" href="https://github.com/torifo/skills-react-state-review">skills-react-state-review</a>
+          </div>
+          <p class="skill-desc" data-lang="en">Reviews React state design for derived state, mutation bugs, and missing keys.</p>
+          <p class="skill-desc" data-lang="ja">Reactの状態設計を派生状態・mutationバグ・keyの欠如でレビュー。</p>
+          <div class="skill-install">
+            <code>cp -r react-state-review ~/.claude/skills/</code>
+            <button class="copy-btn" onclick="copyCode(this, 'cp -r react-state-review ~/.claude/skills/')">copy</button>
+          </div>
+          <div class="skill-links">
+            <a class="link-btn" href="https://github.com/torifo/skills-react-state-review">↗ GitHub</a>
+          </div>
+        </div>
+
       </div>
     </div>
 
@@ -544,7 +728,7 @@
       localStorage.setItem('lang', lang);
     }
 
-    function copyInstall(btn, text) {
+    function copyCode(btn, text) {
       navigator.clipboard.writeText(text).then(() => {
         btn.textContent = 'copied!';
         btn.classList.add('copied');

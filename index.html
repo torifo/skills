@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claude Code Skills</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0d1117;
+      --surface: #161b22;
+      --border: #30363d;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --accent: #58a6ff;
+      --accent-dim: #1f3a5c;
+      --green: #3fb950;
+      --tag-bg: #21262d;
+      --radius: 8px;
+      --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      --mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 14px;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    header {
+      border-bottom: 1px solid var(--border);
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      background: var(--bg);
+      z-index: 10;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text);
+    }
+
+    .logo-icon {
+      width: 28px;
+      height: 28px;
+      background: var(--accent);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: 700;
+      color: #0d1117;
+    }
+
+    .logo-text {
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .logo-sub {
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 400;
+    }
+
+    .lang-toggle {
+      display: flex;
+      gap: 4px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 3px;
+    }
+
+    .lang-btn {
+      padding: 4px 10px;
+      border: none;
+      border-radius: 4px;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 12px;
+      font-family: var(--font);
+      transition: all 0.15s;
+    }
+
+    .lang-btn.active {
+      background: var(--accent);
+      color: #0d1117;
+      font-weight: 600;
+    }
+
+    main {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+    .hero {
+      margin-bottom: 48px;
+    }
+
+    .hero h1 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 15px;
+      max-width: 560px;
+    }
+
+    .install-global {
+      margin-top: 20px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+    }
+
+    .install-global label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .code-line {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .code-line code {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--green);
+      flex: 1;
+    }
+
+    .copy-btn {
+      background: var(--tag-bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 11px;
+      padding: 3px 8px;
+      font-family: var(--font);
+      transition: all 0.15s;
+      white-space: nowrap;
+    }
+
+    .copy-btn:hover { color: var(--text); border-color: var(--accent); }
+    .copy-btn.copied { color: var(--green); border-color: var(--green); }
+
+    .category {
+      margin-bottom: 48px;
+    }
+
+    .category-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .category-icon {
+      font-size: 18px;
+    }
+
+    .category-title {
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .category-count {
+      background: var(--tag-bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      font-size: 11px;
+      color: var(--muted);
+      padding: 1px 8px;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 12px;
+    }
+
+    .skill-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: border-color 0.15s;
+      position: relative;
+    }
+
+    .skill-card:hover { border-color: var(--accent); }
+
+    .skill-card.coming-soon {
+      opacity: 0.5;
+    }
+
+    .skill-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .skill-name {
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .skill-name:hover { text-decoration: underline; }
+
+    .badge-soon {
+      font-size: 10px;
+      background: var(--tag-bg);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      padding: 1px 6px;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+
+    .skill-desc {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+      flex: 1;
+    }
+
+    .skill-install {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      padding: 6px 10px;
+    }
+
+    .skill-install code {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--green);
+      flex: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .skill-links {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .link-btn {
+      font-size: 11px;
+      color: var(--muted);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding: 2px 0;
+      transition: color 0.15s;
+    }
+
+    .link-btn:hover { color: var(--accent); }
+
+    .related-tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .related-tag {
+      font-size: 11px;
+      background: var(--accent-dim);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 1px 7px;
+      text-decoration: none;
+      transition: background 0.15s;
+    }
+
+    .related-tag:hover { background: #2a4a7f; }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 24px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    footer a { color: var(--accent); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    [data-lang="ja"] { display: none; }
+
+    body.ja [data-lang="en"] { display: none; }
+    body.ja [data-lang="ja"] { display: block; }
+    body.ja span[data-lang="ja"] { display: inline; }
+    body.ja span[data-lang="en"] { display: none; }
+    span[data-lang="ja"] { display: none; }
+  </style>
+</head>
+<body>
+  <header>
+    <a class="logo" href="https://github.com/torifo/skills">
+      <div class="logo-icon">S</div>
+      <div>
+        <div class="logo-text">skills</div>
+        <div class="logo-sub">Claude Code skill collection</div>
+      </div>
+    </a>
+    <div class="lang-toggle">
+      <button class="lang-btn active" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('ja')">JA</button>
+    </div>
+  </header>
+
+  <main>
+    <div class="hero">
+      <h1>
+        <span data-lang="en">Claude Code Skills</span>
+        <span data-lang="ja">Claude Code スキル集</span>
+      </h1>
+      <p data-lang="en">A collection of custom skills for Claude Code. Each skill adds focused behaviors — bilingual commits, pre-commit validation, changelog generation, and more.</p>
+      <p data-lang="ja">Claude Code 用カスタムスキルのコレクションです。英日バイリンガルコミット、コミット前検証、更新履歴生成など、特定の動作を追加します。</p>
+
+      <div class="install-global">
+        <label data-lang="en">Install a skill</label>
+        <label data-lang="ja">スキルのインストール</label>
+        <div class="code-line">
+          <code>cp -r &lt;skill-dir&gt; ~/.claude/skills/</code>
+          <button class="copy-btn" onclick="copyInstall(this, 'cp -r &lt;skill-dir&gt; ~/.claude/skills/')">copy</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Git Workflow -->
+    <div class="category">
+      <div class="category-header">
+        <span class="category-icon">⎇</span>
+        <span class="category-title">
+          <span data-lang="en">Git Workflow</span>
+          <span data-lang="ja">Git ワークフロー</span>
+        </span>
+        <span class="category-count">4</span>
+      </div>
+      <div class="skills-grid">
+
+        <div class="skill-card">
+          <div class="skill-header">
+            <a class="skill-name" href="https://github.com/torifo/skills-commit">skills-commit</a>
+          </div>
+          <p class="skill-desc" data-lang="en">Atomic commits with bilingual EN/JA messages. Confirms staged file list and excludes AI attribution.</p>
+          <p class="skill-desc" data-lang="ja">英日バイリンガルのアトミックコミット。ステージ済みファイルを確認、AI帰属を除外。</p>
+          <div class="skill-install">
+            <code>cp -r commit ~/.claude/skills/</code>
+            <button class="copy-btn" onclick="copyInstall(this, 'cp -r commit ~/.claude/skills/')">copy</button>
+          </div>
+          <div class="skill-links">
+            <a class="link-btn" href="https://github.com/torifo/skills-commit">↗ GitHub</a>
+            <a class="link-btn" href="https://github.com/torifo/skills-commit/blob/main/README.ja.md">JA</a>
+          </div>
+          <div class="related-tags">
+            <a class="related-tag" href="https://github.com/torifo/skills-safe-commit">skills-safe-commit</a>
+            <a class="related-tag" href="https://github.com/torifo/skills-changelog">skills-changelog</a>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-header">
+            <a class="skill-name" href="https://github.com/torifo/skills-changelog">skills-changelog</a>
+          </div>
+          <p class="skill-desc" data-lang="en">Bilingual EN/JA changelog from git history. Groups commits by type (feat/fix/refactor/docs).</p>
+          <p class="skill-desc" data-lang="ja">git履歴から英日バイリンガルの更新履歴を生成。feat/fix/refactor/docsのタイプ別に分類。</p>
+          <div class="skill-install">
+            <code>cp -r changelog ~/.claude/skills/</code>
+            <button class="copy-btn" onclick="copyInstall(this, 'cp -r changelog ~/.claude/skills/')">copy</button>
+          </div>
+          <div class="skill-links">
+            <a class="link-btn" href="https://github.com/torifo/skills-changelog">↗ GitHub</a>
+            <a class="link-btn" href="https://github.com/torifo/skills-changelog/blob/main/README.ja.md">JA</a>
+          </div>
+          <div class="related-tags">
+            <a class="related-tag" href="https://github.com/torifo/skills-commit">skills-commit</a>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-header">
+            <a class="skill-name" href="https://github.com/torifo/skills-safe-commit">skills-safe-commit</a>
+          </div>
+          <p class="skill-desc" data-lang="en">Pre-commit validator. Blocks secrets, AI attribution, oversized files, and policy violations.</p>
+          <p class="skill-desc" data-lang="ja">コミット前バリデーター。シークレット・AI帰属・大容量ファイル・ポリシー違反をブロック。</p>
+          <div class="skill-install">
+            <code>cp -r safe-commit ~/.claude/skills/</code>
+            <button class="copy-btn" onclick="copyInstall(this, 'cp -r safe-commit ~/.claude/skills/')">copy</button>
+          </div>
+          <div class="skill-links">
+            <a class="link-btn" href="https://github.com/torifo/skills-safe-commit">↗ GitHub</a>
+            <a class="link-btn" href="https://github.com/torifo/skills-safe-commit/blob/main/README.ja.md">JA</a>
+          </div>
+          <div class="related-tags">
+            <a class="related-tag" href="https://github.com/torifo/skills-commit">skills-commit</a>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-header">
+            <a class="skill-name" href="https://github.com/torifo/skills-branch-cleanup">skills-branch-cleanup</a>
+          </div>
+          <p class="skill-desc" data-lang="en">Safe stale branch and worktree cleanup. Confirms each deletion — never deletes silently.</p>
+          <p class="skill-desc" data-lang="ja">ステールブランチとワークツリーの安全な削除。削除は必ず1件ずつ確認。</p>
+          <div class="skill-install">
+            <code>cp -r branch-cleanup ~/.claude/skills/</code>
+            <button class="copy-btn" onclick="copyInstall(this, 'cp -r branch-cleanup ~/.claude/skills/')">copy</button>
+          </div>
+          <div class="skill-links">
+            <a class="link-btn" href="https://github.com/torifo/skills-branch-cleanup">↗ GitHub</a>
+            <a class="link-btn" href="https://github.com/torifo/skills-branch-cleanup/blob/main/README.ja.md">JA</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Planning & Testing (coming soon) -->
+    <div class="category">
+      <div class="category-header">
+        <span class="category-icon">⏱</span>
+        <span class="category-title">
+          <span data-lang="en">Planning & Testing</span>
+          <span data-lang="ja">プランニング・テスト</span>
+        </span>
+        <span class="category-count" style="color:#58a6ff;border-color:#1f3a5c;background:#1f3a5c">coming soon</span>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-card coming-soon">
+          <div class="skill-header">
+            <span class="skill-name">skills-time-estimate</span>
+            <span class="badge-soon">soon</span>
+          </div>
+          <p class="skill-desc" data-lang="en">Estimates execution time and token cost before heavy operations.</p>
+          <p class="skill-desc" data-lang="ja">重い操作の前に実行時間とトークンコストを見積もる。</p>
+        </div>
+        <div class="skill-card coming-soon">
+          <div class="skill-header">
+            <span class="skill-name">skills-plan-before-action</span>
+            <span class="badge-soon">soon</span>
+          </div>
+          <p class="skill-desc" data-lang="en">Outputs a numbered plan and waits for approval before modifying files or running destructive commands.</p>
+          <p class="skill-desc" data-lang="ja">ファイル変更・破壊的コマンドの前に番号付き計画を提示し承認を待つ。</p>
+        </div>
+        <div class="skill-card coming-soon">
+          <div class="skill-header">
+            <span class="skill-name">skills-run-tests</span>
+            <span class="badge-soon">soon</span>
+          </div>
+          <p class="skill-desc" data-lang="en">Detects test runner, estimates time, offers filter/bail/background options before running.</p>
+          <p class="skill-desc" data-lang="ja">テストランナーを検出し、実行前に時間見積もりとフィルタ・バックグラウンド実行を提案。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Code Analysis (coming soon) -->
+    <div class="category">
+      <div class="category-header">
+        <span class="category-icon">🔍</span>
+        <span class="category-title">
+          <span data-lang="en">Code Analysis</span>
+          <span data-lang="ja">コード分析</span>
+        </span>
+        <span class="category-count" style="color:#58a6ff;border-color:#1f3a5c;background:#1f3a5c">coming soon</span>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-card coming-soon">
+          <div class="skill-header"><span class="skill-name">skills-error-trace</span><span class="badge-soon">soon</span></div>
+          <p class="skill-desc" data-lang="en">Systematically analyzes stack traces to find root cause.</p>
+          <p class="skill-desc" data-lang="ja">スタックトレースを体系的に分析して根本原因を特定。</p>
+        </div>
+        <div class="skill-card coming-soon">
+          <div class="skill-header"><span class="skill-name">skills-dead-code</span><span class="badge-soon">soon</span></div>
+          <p class="skill-desc" data-lang="en">Finds unused exports, imports, and functions. Confirms each removal.</p>
+          <p class="skill-desc" data-lang="ja">未使用のエクスポート・インポート・関数を検出。削除前に確認。</p>
+        </div>
+        <div class="skill-card coming-soon">
+          <div class="skill-header"><span class="skill-name">skills-sql-explain</span><span class="badge-soon">soon</span></div>
+          <p class="skill-desc" data-lang="en">Analyzes EXPLAIN output and proposes specific query optimizations.</p>
+          <p class="skill-desc" data-lang="ja">EXPLAIN出力を解析し、具体的なクエリ最適化を提案。</p>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <p>
+      <span data-lang="en">Built for <a href="https://claude.ai/code">Claude Code</a> · <a href="https://github.com/torifo/skills">View on GitHub</a></span>
+      <span data-lang="ja"><a href="https://claude.ai/code">Claude Code</a> 用スキル集 · <a href="https://github.com/torifo/skills">GitHub で見る</a></span>
+    </p>
+  </footer>
+
+  <script>
+    function setLang(lang) {
+      document.body.classList.toggle('ja', lang === 'ja');
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.textContent === lang.toUpperCase());
+      });
+      localStorage.setItem('lang', lang);
+    }
+
+    function copyInstall(btn, text) {
+      navigator.clipboard.writeText(text).then(() => {
+        btn.textContent = 'copied!';
+        btn.classList.add('copied');
+        setTimeout(() => { btn.textContent = 'copy'; btn.classList.remove('copied'); }, 1800);
+      });
+    }
+
+    const saved = localStorage.getItem('lang');
+    if (saved === 'ja') setLang('ja');
+  </script>
+</body>
+</html>

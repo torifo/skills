@@ -396,9 +396,24 @@
           <span data-lang="en">Planning &amp; Execution</span>
           <span data-lang="ja">プランニング・実行</span>
         </span>
-        <span class="category-count">3</span>
+        <span class="category-count">4</span>
       </div>
       <div class="skills-grid">
+
+        <div class="skill-card">
+          <div class="skill-header">
+            <a class="skill-name" href="https://github.com/torifo/skills-create-spec">skills-create-spec</a>
+          </div>
+          <p class="skill-desc" data-lang="en">Generates a rich self-contained spec.md covering user stories, architecture, API contracts, and data models. Improves itself from your feedback.</p>
+          <p class="skill-desc" data-lang="ja">ユーザーストーリー・アーキテクチャ・API・データモデルを網羅した自己完結型のspec.mdを生成。フィードバックでスキル自体が改善される。</p>
+          <div class="skill-install">
+            <code>cp -r create-spec ~/.claude/skills/</code>
+            <button class="copy-btn" onclick="copyCode(this, 'cp -r create-spec ~/.claude/skills/')">copy</button>
+          </div>
+          <div class="skill-links">
+            <a class="link-btn" href="https://github.com/torifo/skills-create-spec">↗ GitHub</a>
+          </div>
+        </div>
 
         <div class="skill-card">
           <div class="skill-header">
@@ -704,6 +719,36 @@
           </div>
           <div class="skill-links">
             <a class="link-btn" href="https://github.com/torifo/skills-react-state-review">↗ GitHub</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Session Management -->
+    <div class="category">
+      <div class="category-header">
+        <span class="category-icon">💾</span>
+        <span class="category-title">
+          <span data-lang="en">Session Management</span>
+          <span data-lang="ja">セッション管理</span>
+        </span>
+        <span class="category-count">1</span>
+      </div>
+      <div class="skills-grid">
+
+        <div class="skill-card">
+          <div class="skill-header">
+            <a class="skill-name" href="https://github.com/torifo/skills-context-snapshot-clear">skills-context-snapshot-clear</a>
+          </div>
+          <p class="skill-desc" data-lang="en">Snapshots complete session state — actual code, verbatim errors, executable next steps — then clears context. Resumes instantly on the next session without re-explanation.</p>
+          <p class="skill-desc" data-lang="ja">実際のコード・エラー全文・実行可能な次のアクションをスナップショット保存してコンテキストをクリア。次のセッションで再説明なしに即座に再開。</p>
+          <div class="skill-install">
+            <code>cp -r context-snapshot-clear ~/.claude/skills/</code>
+            <button class="copy-btn" onclick="copyCode(this, 'cp -r context-snapshot-clear ~/.claude/skills/')">copy</button>
+          </div>
+          <div class="skill-links">
+            <a class="link-btn" href="https://github.com/torifo/skills-context-snapshot-clear">↗ GitHub</a>
           </div>
         </div>
 
